@@ -12,14 +12,17 @@ datasource db {
 
 //user model
 model User {
-  id       String @id @default(uuid())
-  name     String
-  email    String @unique
-  password String
-  bio      String?
-  sex      String
-  birthday DateTime?
-  role     role @default(USER) 
+  id            String @id @default(uuid())
+  username      String
+  email         String @unique
+  password      String
+  sex           String
+  avatar        String? @db.VarChar(500)
+  bio           String?
+  tripInterests String? @db.VarChar(500)
+  birthday      DateTime 
+  role          role @default(USER) 
+  activities   activities[]
 }
 
 //roles model
@@ -27,3 +30,46 @@ enum role {
   USER
   ADMIN
 }
+
+
+
+//destinies model
+model destinies {
+  id         Int @id @default(autoincrement())
+  state      String
+  bestSeason String @db.VarChar(500)
+  weather    String @db.VarChar(500)
+  imageUrl   String @db.VarChar(500)
+  touristics touristics[]
+}
+
+//touristics
+model touristics {
+  id           Int @id @default(autoincrement())
+  location     String
+  city         String
+  localMaps    String @db.VarChar(500)
+  description  String @db.VarChar(500)
+  destiniesId  Int
+  images       images[]
+  activities   activities[]
+  destinies    destinies @relation(fields: [destiniesId], references: [id]) 
+}
+
+//images
+model images {
+  id            Int @id @default(autoincrement())
+  url           String @db.VarChar(500)
+  touristicId   Int
+  touristic     touristics @relation(fields: [touristicId], references: [id])
+}
+
+model activities {
+  id           Int @id @default(autoincrement())
+  name         String
+  description  String @db.VarChar(500)
+  touristicId  Int
+  userId       String
+  touristic    touristics @relation(fields: [touristicId], references: [id])
+  user         User @relation(fields: [userId], references: [id])
+  }
