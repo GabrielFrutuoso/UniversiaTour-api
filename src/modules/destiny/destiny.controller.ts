@@ -18,17 +18,17 @@ export class DestinyController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.destinyService.findOne(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateDestinyDto: UpdateDestinyDto) {
+  update(@Param('id') id: number, @Body() updateDestinyDto: UpdateDestinyDto) {
     return this.destinyService.update(+id, updateDestinyDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.destinyService.remove(+id);
+  remove(@Param('id') id: number) {
+    return this.destinyService.remove(id);
   }
 }

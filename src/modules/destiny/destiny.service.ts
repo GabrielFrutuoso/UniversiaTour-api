@@ -15,14 +15,17 @@ export class DestinyService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} destiny`;
+    return this.prisma.destinies.findUnique({ where: { id } });
   }
 
   update(id: number, updateDestinyDto: UpdateDestinyDto) {
-    return `This action updates a #${id} destiny`;
+    return this.prisma.destinies.update({
+      where: { id },
+      data: {...updateDestinyDto}
+    });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} destiny`;
+    return this.prisma.destinies.delete({ where: { id } });
   }
 }
