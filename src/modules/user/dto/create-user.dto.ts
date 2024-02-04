@@ -1,4 +1,4 @@
-import { IsDate, IsEmail, IsNotEmpty, IsString } from "class-validator";
+import { IsDate, IsEmail, IsNotEmpty, IsString, Matches } from "class-validator";
 import { User } from "../entities/user.entity";
 import { Prisma } from "@prisma/client";
 
@@ -11,6 +11,9 @@ export class CreateUserDto implements User {
     @IsString()
     email: string;
 
+    @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
+        message: 'password too weak',
+      })
     @IsString()
     password: string;
 
