@@ -14,9 +14,9 @@ export class ImagesService {
     return this.prisma.images.findMany();
   }
 
-  // findOne(id: number) {
-  //   return `This action returns a #${id} image`;
-  // }
+  findOne(id: number) {
+    return `This action returns a #${id} image`;
+  }
 
   update(id: number, updateImageDto: UpdateImageDto) {
     return `This action updates a #${id} image`;

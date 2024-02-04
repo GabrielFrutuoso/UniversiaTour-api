@@ -4,6 +4,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { UUID } from 'crypto';
 import * as bcrypt from 'bcrypt';
+import { User } from './entities/user.entity';
 
 @Injectable()
 export class UserService {
@@ -16,12 +17,13 @@ export class UserService {
     });
   }
 
-  findOne(id: UUID) {
-    return this.prisma.user.findUnique({ where: { id, password: undefined }, include: { activities: true } });
+  async findOne(id: UUID) {
+    return this.prisma.user.findUnique({ where: { id }, include: { activities: true } });
+    
   }
 
   update(id: UUID, updateUserDto: UpdateUserDto) {
-    return this.prisma.user.update({ where: { id }, data: updateUserDto });
+      return this.prisma.user.update({ where: { id }, data: updateUserDto });
   }
 
   remove(id: UUID) {
