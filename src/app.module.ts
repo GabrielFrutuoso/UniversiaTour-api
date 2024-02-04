@@ -4,10 +4,11 @@ import { TouristicsModule } from './modules/touristics/touristics.module';
 import { UserModule } from './modules/user/user.module';
 import { ActivitiesModule } from './modules/activities/activities.module';
 import { ImagesModule } from './modules/images/images.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 
 @Module({
-  imports: [DestinyModule, TouristicsModule, UserModule, ActivitiesModule, ImagesModule],
+  imports: [DestinyModule, TouristicsModule, UserModule, ActivitiesModule, ImagesModule, AuthModule],
   controllers: [],
   providers: [],
 })
