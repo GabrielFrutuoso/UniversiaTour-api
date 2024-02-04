@@ -1,4 +1,4 @@
+import { PartialType } from '@nestjs/mapped-types';
+import { CreateTouristicDto } from './create-touristic.dto';
 
-import { Prisma } from '@prisma/client';
-
-export class UpdateTouristicDto implements Prisma.touristicsUpdateInput {}
+export class UpdateTouristicDto extends PartialType(CreateTouristicDto) {}

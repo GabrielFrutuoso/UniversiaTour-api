@@ -15,14 +15,17 @@ export class TouristicsService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} touristic`;
+    return this.prisma.touristics.findUnique({ where: { id } });
   }
 
   update(id: number, updateTouristicDto: UpdateTouristicDto) {
-    return `This action updates a #${id} touristic`;
+    return this.prisma.touristics.update({
+      where: { id },
+      data: { ...updateTouristicDto },
+    });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} touristic`;
+    return this.prisma.touristics.delete({ where: { id } });
   }
 }
