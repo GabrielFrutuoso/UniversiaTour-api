@@ -12,9 +12,7 @@ export class UserService {
     const encryptedPassword = bcrypt.hashSync(createUserDto.password, 10);
 
     return this.prisma.user.create({ 
-      include: { activities: true }, 
-      data: { ...createUserDto, password: encryptedPassword },
-  
+      data: { ...createUserDto, password: encryptedPassword }
     });
   }
 
