@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { DestinyService } from './destiny.service';
 import { CreateDestinyDto } from './dto/create-destiny.dto';
 import { UpdateDestinyDto } from './dto/update-destiny.dto';
+import { IsPublic } from '../auth/decorators/is-public.decorator';
 
 @Controller('destiny')
 export class DestinyController {
@@ -11,12 +12,12 @@ export class DestinyController {
   create(@Body() createDestinyDto: CreateDestinyDto) {
     return this.destinyService.create(createDestinyDto);
   }
-
+ @IsPublic()  
   @Get()
   findAll() {
     return this.destinyService.findAll();
   }
-
+ @IsPublic()
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.destinyService.findOne(+id);
