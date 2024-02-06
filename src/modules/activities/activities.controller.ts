@@ -2,6 +2,8 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ActivitiesService } from './activities.service';
 import { CreateActivityDto } from './dto/create-activity.dto';
 import { UpdateActivityDto } from './dto/update-activity.dto';
+import { UUID } from 'crypto';
+import { IsPublic } from '../auth/decorators/is-public.decorator';
 
 @Controller('activities')
 export class ActivitiesController {
@@ -12,23 +14,19 @@ export class ActivitiesController {
     return this.activitiesService.create(createActivityDto);
   }
 
-  @Get()
-  findAll() {
-    return this.activitiesService.findAll();
-  }
-
+  @IsPublic()
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.activitiesService.findOne(+id);
+  findOne(@Param('id') id: UUID) {
+    return this.activitiesService.findByUserId(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateActivityDto: UpdateActivityDto) {
-    return this.activitiesService.update(+id, updateActivityDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: UUID, @Body() updateActivityDto: UpdateActivityDto) {
+  //   return this.activitiesService.update(id, updateActivityDto);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.activitiesService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: UUID) {
+  //   return this.activitiesService.remove(id);
+  // }
 }
