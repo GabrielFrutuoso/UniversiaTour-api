@@ -1,10 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { UUID } from 'crypto';
 import * as bcrypt from 'bcrypt';
-import { User } from './entities/user.entity';
 
 @Injectable()
 export class UserService {
@@ -18,12 +17,17 @@ export class UserService {
   }
 
   async findOne(id: UUID) {
-    return this.prisma.user.findUnique({ where: { id }, include: { activities: true } });
-    
+    const user = await this.prisma.user.findUnique({ where: { id }, include: { activities: true } });
+
+    if (user) {
+      return {...user, password: undefined}
+    }
+
+    throw new NotFoundException("user not found :(");
   }
 
-  update(id: UUID, updateUserDto: UpdateUserDto) {
-      return this.prisma.user.update({ where: { id }, data: updateUserDto });
+  async update(id: UUID, updateUserDto: UpdateUserDto) {
+    return this.prisma.user.update({ where: { id }, data: updateUserDto })
   }
 
   remove(id: UUID) {
