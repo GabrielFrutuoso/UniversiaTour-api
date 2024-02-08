@@ -49,7 +49,7 @@ model touristics {
   location     String
   city         String
   localMaps    String @db.VarChar(500)
-  description  String @db.VarChar(500)
+  description  String @db.VarChar(2000)
   destiniesId  Int
   images       images[]
   activities   activities[]

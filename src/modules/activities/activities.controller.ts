@@ -16,17 +16,17 @@ export class ActivitiesController {
 
   @IsPublic()
   @Get(':id')
-  findOne(@Param('id') id: UUID) {
+  findOne(@Param('id') id: number) {
     return this.activitiesService.findByUserId(id);
   }
 
-  // @Patch(':id')
-  // update(@Param('id') id: UUID, @Body() updateActivityDto: UpdateActivityDto) {
-  //   return this.activitiesService.update(id, updateActivityDto);
-  // }
+  @Patch(':id')
+  update(@Param('id') id: number, @Body() updateActivityDto: UpdateActivityDto) {
+    return this.activitiesService.update(id, updateActivityDto);
+  }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: UUID) {
-  //   return this.activitiesService.remove(id);
-  // }
+  @Delete(':id')
+  remove(@Param('id') id: number) {
+    return this.activitiesService.remove(id);
+  }
 }
