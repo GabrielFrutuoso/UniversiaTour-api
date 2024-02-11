@@ -12,12 +12,14 @@ export class DestinyController {
   create(@Body() createDestinyDto: CreateDestinyDto) {
     return this.destinyService.create(createDestinyDto);
   }
- @IsPublic()  
+
+  @IsPublic()  
   @Get()
   findAll() {
     return this.destinyService.findAll();
   }
- @IsPublic()
+  
+  @IsPublic()
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.destinyService.findOne(+id);

@@ -6,5 +6,6 @@ export class Destiny {
     bestSeason: string;
     weather: string;
     imageUrl: string;
+    description: string;
     touristics?: Prisma.touristicsUncheckedCreateNestedManyWithoutDestiniesInput;
 }

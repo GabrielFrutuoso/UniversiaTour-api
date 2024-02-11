@@ -14,9 +14,14 @@ export class CreateDestinyDto implements Destiny {
     @IsNotEmpty()
     @IsString()
     weather: string;
+
     @IsNotEmpty()
     @IsString()
     imageUrl: string;
+
+    @IsNotEmpty()
+    @IsString()
+    description: string;
 
     @IsOptional()
     touristics?: Prisma.touristicsUncheckedCreateNestedManyWithoutDestiniesInput;

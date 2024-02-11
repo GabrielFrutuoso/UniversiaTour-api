@@ -35,12 +35,13 @@ enum role {
 
 //destinies model
 model destinies {
-  id         Int @id @default(autoincrement())
-  state      String
-  bestSeason String @db.VarChar(500)
-  weather    String @db.VarChar(500)
-  imageUrl   String @db.VarChar(500)
-  touristics touristics[]
+  id           Int @id @default(autoincrement())
+  state        String
+  bestSeason   String @db.VarChar(500)
+  weather      String @db.VarChar(500)
+  description  String @db.VarChar(2000)
+  imageUrl     String @db.VarChar(500)
+  touristics   touristics[]
 }
 
 //touristics

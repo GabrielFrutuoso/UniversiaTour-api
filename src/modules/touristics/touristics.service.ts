@@ -15,7 +15,7 @@ export class TouristicsService {
   }
 
   findOne(id: number) {
-    return this.prisma.touristics.findUnique({ where: { id } });
+    return this.prisma.touristics.findUnique({ where: { id }, include: { images: true } });
   }
 
   update(id: number, updateTouristicDto: UpdateTouristicDto) {

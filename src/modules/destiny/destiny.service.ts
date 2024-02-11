@@ -15,7 +15,7 @@ export class DestinyService {
   }
 
   findOne(id: number) {
-    return this.prisma.destinies.findUnique({ where: { id } });
+    return this.prisma.destinies.findUnique({ where: { id }, include: { touristics: true } });
   }
 
   update(id: number, updateDestinyDto: UpdateDestinyDto) {
