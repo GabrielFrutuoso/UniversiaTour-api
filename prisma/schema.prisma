@@ -20,7 +20,7 @@ model User {
   avatar        String? @db.VarChar(500)
   bio           String?
   tripInterests String? @db.VarChar(500)
-  birthday      DateTime 
+  birthday      DateTime @db.Date
   role          role @default(USER) 
   activities   activities[]
 }

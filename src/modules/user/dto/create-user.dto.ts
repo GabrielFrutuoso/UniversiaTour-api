@@ -1,4 +1,4 @@
-import { IsDate, IsEmail, IsNotEmpty, IsString, Matches } from "class-validator";
+import { IsDate, IsDateString, IsEmail, IsNotEmpty, IsOptional, IsString, Matches } from "class-validator";
 import { User } from "../entities/user.entity";
 import { Prisma } from "@prisma/client";
 
@@ -11,26 +11,29 @@ export class CreateUserDto implements User {
     @IsString()
     email: string;
 
-    @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
-        message: 'password too weak',
-      })
+    // @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
+    //     message: 'password too weak',
+    //   })
+    @IsNotEmpty()
     @IsString()
     password: string;
 
     @IsString()
     sex: string;
 
+    @IsOptional()
     @IsString()
     bio?: string;
 
+    @IsOptional()
     @IsString()
     avatar?: string;
 
-    @IsDate()
+    @IsDateString()
     birthday: Date;
 
-    @IsNotEmpty()
     tripInterests?: string;
+
     role: "USER" | "ADMIN";
 
     activitie?: Prisma.activitiesUncheckedCreateNestedManyWithoutUserInput;
