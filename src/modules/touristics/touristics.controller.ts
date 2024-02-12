@@ -25,6 +25,12 @@ export class TouristicsController {
     return this.touristicsService.findOne(+id);
   }
 
+  @IsPublic()
+  @Get('by-destiny/:id')
+  findByDestiny(@Param('id') id: string) {
+    return this.touristicsService.findByDestiny(+id);
+  }
+  
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateTouristicDto: UpdateTouristicDto) {
     return this.touristicsService.update(+id, updateTouristicDto);

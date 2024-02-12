@@ -5,6 +5,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class TouristicsService {
+
   constructor(private readonly prisma: PrismaService) {}
   create(createTouristicDto: CreateTouristicDto) {
     return 'This action adds a new touristic';
@@ -12,6 +13,10 @@ export class TouristicsService {
 
   findAll() {
     return this.prisma.touristics.findMany({ include: { images: true } });
+  }
+
+  findByDestiny(destiniesId: number) {
+    return this.prisma.touristics.findMany({ where: { destiniesId }, include: { images: true } });
   }
 
   findOne(id: number) {
