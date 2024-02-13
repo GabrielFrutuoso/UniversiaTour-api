@@ -16,11 +16,10 @@ model User {
   username      String
   email         String @unique
   password      String
-  sex           String
-  avatar        String? @db.VarChar(500)
+  avatar        String? @db.VarChar(200)
   bio           String?
   tripInterests String? @db.VarChar(500)
-  birthday      DateTime @db.Date
+  birthday      String
   role          role @default(USER) 
   activities   activities[]
 }

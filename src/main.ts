@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
-
+import * as bodyParser from 'body-parser';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
 
@@ -12,7 +12,8 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }),
   );
-
+  app.use(bodyParser.json({limit: '120mb'}));
+  app.use(bodyParser.urlencoded({limit: '120mb', extended: true}));
   await app.listen(8080);
 }
 bootstrap();

@@ -18,9 +18,6 @@ export class CreateUserDto implements User {
     @IsString()
     password: string;
 
-    @IsString()
-    sex: string;
-
     @IsOptional()
     @IsString()
     bio?: string;
@@ -29,8 +26,8 @@ export class CreateUserDto implements User {
     @IsString()
     avatar?: string;
 
-    @IsDateString()
-    birthday: Date;
+    @IsString()
+    birthday: string;
 
     tripInterests?: string;
 
