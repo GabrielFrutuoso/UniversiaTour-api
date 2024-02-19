@@ -34,7 +34,12 @@ export class UserService {
     return this.prisma.user.delete({ where: { id } });
   }
 
-  findByEmail(email: string) {
-    return this.prisma.user.findUnique({ where: { email } });
+  async findByEmail(email: string) {
+    if (!email) {
+      return null;
+    }
+
+    return await this.prisma.user.findUnique({ where: { email }, include: { activities: true } });
+
   }
 }

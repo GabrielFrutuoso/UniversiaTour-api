@@ -1,11 +1,18 @@
 import { Prisma } from "@prisma/client";
 import { Activity } from "../entities/activity.entity";
+import { IsNumber, IsOptional, IsString } from "class-validator";
 
-export class CreateActivityDto implements Prisma.activitiesUncheckedCreateInput {
+export class CreateActivityDto {
+    @IsOptional()
     id?: number;
-    name: string;
+
+    @IsString()
     description: string;
+
+    @IsNumber()
     touristicId: number;
+
+    @IsString()
     userId: string;
 
 }

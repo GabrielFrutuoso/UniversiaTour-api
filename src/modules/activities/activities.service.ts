@@ -6,16 +6,18 @@ import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class ActivitiesService {
   constructor(private readonly prisma: PrismaService) {}
+
   create(createActivityDto: CreateActivityDto) {
-    return this.prisma.activities.create({
-      data: createActivityDto
-    })
+    return this.prisma.activities.create({ data: { ...createActivityDto } });
+  }
+
+  findAll() {
+    return this.prisma.activities.findMany({ include: { touristic: true } });
   }
  
-  findByUserId(id: number) {
-    return this.prisma.activities.findMany({ where: { id } });
-  }
- 
+  findOne(id: number) {
+    return this.prisma.activities.findUnique({ where: { id }, include: { touristic: true, }});
+  } 
   update(id: number, updateActivityDto: UpdateActivityDto) {
     return this.prisma.activities.update({ where: { id }, data: { ...updateActivityDto } });
   }

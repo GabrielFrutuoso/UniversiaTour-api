@@ -38,6 +38,7 @@ model destinies {
   state        String
   bestSeason   String @db.VarChar(500)
   weather      String @db.VarChar(500)
+  localMaps    String @db.VarChar(500)
   description  String @db.VarChar(2000)
   imageUrl     String @db.VarChar(500)
   touristics   touristics[]
@@ -66,7 +67,6 @@ model images {
 
 model activities {
   id           Int @id @default(autoincrement())
-  name         String
   description  String @db.VarChar(500)
   touristicId  Int
   userId       String

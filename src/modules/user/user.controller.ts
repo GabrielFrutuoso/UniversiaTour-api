@@ -16,9 +16,13 @@ export class UserController {
   }
 
 
-  @Get(':id')
-  async findOne(@Param('id') id: UUID) {
-    return await this.userService.findOne(id)
+  // @Get(':id')
+  // async findOne(@Param('id') id: UUID) {
+  //   return await this.userService.findOne(id)
+  // }
+  @Get(':email')
+  async findByEmail(@Param('email') email: string) {
+    return await this.userService.findByEmail(email)
   }
 
   @Patch(':id')

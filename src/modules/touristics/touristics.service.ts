@@ -12,7 +12,7 @@ export class TouristicsService {
   }
 
   findAll() {
-    return this.prisma.touristics.findMany({ include: { images: true } });
+    return this.prisma.touristics.findMany({ include: { images: true, destinies: true } });
   }
 
   findByDestiny(destiniesId: number) {
@@ -20,7 +20,7 @@ export class TouristicsService {
   }
 
   findOne(id: number) {
-    return this.prisma.touristics.findUnique({ where: { id }, include: { images: true } });
+    return this.prisma.touristics.findUnique({ where: { id }, include: { images: true, destinies: true } });
   }
 
   update(id: number, updateTouristicDto: UpdateTouristicDto) {

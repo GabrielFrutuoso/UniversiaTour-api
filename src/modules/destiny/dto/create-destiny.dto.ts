@@ -21,6 +21,10 @@ export class CreateDestinyDto implements Destiny {
 
     @IsNotEmpty()
     @IsString()
+    localMaps: string;
+
+    @IsNotEmpty()
+    @IsString()
     description: string;
 
     @IsOptional()

@@ -7,5 +7,6 @@ export class Destiny {
     weather: string;
     imageUrl: string;
     description: string;
+    localMaps: string;
     touristics?: Prisma.touristicsUncheckedCreateNestedManyWithoutDestiniesInput;
 }
