@@ -29,6 +29,7 @@ export class CreateUserDto implements User {
     @IsString()
     birthday: string;
 
+    @IsOptional()
     @IsString()
     tripInterests?: string;
 
