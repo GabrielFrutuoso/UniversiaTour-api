@@ -15,19 +15,17 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
-  @IsPublic() //not public
+
   @Get(':email')
   async findByEmail(@Param('email') email: string) {
     return await this.userService.findByEmail(email)
   }
 
-  @IsPublic() //not public
   @Patch(':id')
   update(@Param('id') id: UUID, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(id, updateUserDto);
   }
 
-  @IsPublic() //not public
   @Delete(':id')
   remove(@Param('id') id:UUID) {
     return this.userService.remove(id);

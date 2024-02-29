@@ -8,7 +8,7 @@ import { IsPublic } from '../auth/decorators/is-public.decorator';
 export class ActivitiesController {
   constructor(private readonly activitiesService: ActivitiesService) {}
 
-  @IsPublic()
+
   @Post()
   create(@Body() createActivityDto: CreateActivityDto) {
     return this.activitiesService.create(createActivityDto);
@@ -20,7 +20,6 @@ export class ActivitiesController {
     return this.activitiesService.findAll();
   }
 
-  @IsPublic()
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.activitiesService.findOne(id);
