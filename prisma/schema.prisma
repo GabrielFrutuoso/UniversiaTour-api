@@ -16,7 +16,7 @@ model User {
   username      String
   email         String @unique
   password      String
-  avatar        String? @db.VarChar(200)
+  avatar        String? @db.VarChar(500)
   bio           String?
   tripInterests String? @db.VarChar(500)
   birthday      String
