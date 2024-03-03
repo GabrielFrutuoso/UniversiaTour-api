@@ -1,7 +1,7 @@
 import { Prisma } from "@prisma/client";
 import { IsNotEmpty, IsOptional, IsString } from "class-validator";
 
-export class CreateTouristicDto implements Prisma.touristicsCreateInput {
+export class CreateTouristicDto {
     @IsNotEmpty()
     @IsString()
     location: string;

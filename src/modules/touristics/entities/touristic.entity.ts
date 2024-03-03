@@ -1,6 +1,6 @@
 import { Prisma } from "@prisma/client";
 
-export class Touristic implements Prisma.touristicsUncheckedCreateInput {
+export class Touristic {
     id?: number;
     location: string;
     city: string;
