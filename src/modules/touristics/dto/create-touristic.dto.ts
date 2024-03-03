@@ -12,7 +12,7 @@ export class CreateTouristicDto implements Prisma.touristicsCreateInput {
 
     @IsNotEmpty()
     @IsString()
-    localMaps: string;
+    local_maps: string;
 
     @IsNotEmpty()
     @IsString()
