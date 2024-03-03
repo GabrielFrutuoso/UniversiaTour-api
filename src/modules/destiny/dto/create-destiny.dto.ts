@@ -1,8 +1,7 @@
 import { Prisma } from "@prisma/client";
-import { Destiny } from "../entities/destiny.entity";
 import { IsNotEmpty, IsOptional, IsString } from "class-validator";
 
-export class CreateDestinyDto implements Destiny {
+export class CreateDestinyDto implements Prisma.destiniesUncheckedCreateInput {
     @IsNotEmpty()
     @IsString()
     state: string;
