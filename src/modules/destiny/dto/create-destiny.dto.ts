@@ -9,7 +9,7 @@ export class CreateDestinyDto implements Destiny {
       
     @IsNotEmpty()
     @IsString()
-    bestSeason: string;
+    best_season: string;
 
     @IsNotEmpty()
     @IsString()
@@ -17,11 +17,11 @@ export class CreateDestinyDto implements Destiny {
 
     @IsNotEmpty()
     @IsString()
-    imageUrl: string;
+    image_url: string;
 
     @IsNotEmpty()
     @IsString()
-    localMaps: string;
+    local_maps: string;
 
     @IsNotEmpty()
     @IsString()

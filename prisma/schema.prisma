@@ -36,11 +36,11 @@ enum role {
 model destinies {
   id           Int @id @default(autoincrement())
   state        String
-  bestSeason   String @db.VarChar(500) @map("best_season")
+  best_season   String @db.VarChar(500) @map("best_season")
   weather      String @db.VarChar(500)
-  localMaps    String @db.VarChar(500) @map("local_maps")
+  local_maps    String @db.VarChar(500) @map("local_maps")
   description  String @db.VarChar(2000)
-  imageUrl     String @db.VarChar(500) @map("image_url")
+  image_url     String @db.VarChar(500) @map("image_url")
   touristics   touristics[]
 }
 
@@ -49,27 +49,27 @@ model touristics {
   id           Int @id @default(autoincrement())
   location     String
   city         String
-  localMaps    String @db.VarChar(500) @map("local_maps")
+  local_maps    String @db.VarChar(500) @map("local_maps")
   description  String @db.VarChar(2000)
-  destiniesId  Int @map("destinies_id")
+  destinies_id  Int @map("destinies_id")
   images       images[]
   activities   activities[]
-  destinies    destinies @relation(fields: [destiniesId], references: [id]) 
+  destinies    destinies @relation(fields: [destinies_id], references: [id]) 
 }
 
 //images
 model images {
   id            Int @id @default(autoincrement())
   url           String @db.VarChar(500)
-  touristicId   Int @map("touristic_id")
-  touristic     touristics @relation(fields: [touristicId], references: [id])
+  touristic_id   Int @map("touristic_id")
+  touristic     touristics @relation(fields: [touristic_id], references: [id])
 }
 
 model activities {
   id           Int @id @default(autoincrement())
   description  String @db.VarChar(500)
-  touristicId  Int @map("touristic_id")
-  userId       String @map("user_id")
-  touristic    touristics @relation(fields: [touristicId], references: [id])
-  user         User @relation(fields: [userId], references: [id])
+  touristic_id  Int @map("touristic_id")
+  user_id       String @map("user_id")
+  touristic    touristics @relation(fields: [touristic_id], references: [id])
+  user         User @relation(fields: [user_id], references: [id])
   }
