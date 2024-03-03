@@ -12,8 +12,6 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }),
   );
-  app.use(bodyParser.json({limit: '120mb'}));
-  app.use(bodyParser.urlencoded({limit: '120mb', extended: true}));
   await app.listen(8080);
 }
 bootstrap();

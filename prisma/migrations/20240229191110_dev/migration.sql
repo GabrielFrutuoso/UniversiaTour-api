@@ -20,11 +20,11 @@ CREATE TABLE "User" (
 CREATE TABLE "destinies" (
     "id" SERIAL NOT NULL,
     "state" TEXT NOT NULL,
-    "bestSeason" VARCHAR(500) NOT NULL,
+    "best_season" VARCHAR(500) NOT NULL,
     "weather" VARCHAR(500) NOT NULL,
-    "localMaps" VARCHAR(500) NOT NULL,
+    "local_maps" VARCHAR(500) NOT NULL,
     "description" VARCHAR(2000) NOT NULL,
-    "imageUrl" VARCHAR(500) NOT NULL,
+    "image_url" VARCHAR(500) NOT NULL,
 
     CONSTRAINT "destinies_pkey" PRIMARY KEY ("id")
 );

@@ -36,11 +36,11 @@ enum role {
 model destinies {
   id           Int @id @default(autoincrement())
   state        String
-  bestSeason   String @db.VarChar(500)
+  bestSeason   String @db.VarChar(500) @map("best_season")
   weather      String @db.VarChar(500)
-  localMaps    String @db.VarChar(500)
+  localMaps    String @db.VarChar(500) @map("local_maps")
   description  String @db.VarChar(2000)
-  imageUrl     String @db.VarChar(500)
+  imageUrl     String @db.VarChar(500) @map("image_url")
   touristics   touristics[]
 }
 
@@ -49,9 +49,9 @@ model touristics {
   id           Int @id @default(autoincrement())
   location     String
   city         String
-  localMaps    String @db.VarChar(500)
+  localMaps    String @db.VarChar(500) @map("local_maps")
   description  String @db.VarChar(2000)
-  destiniesId  Int
+  destiniesId  Int @map("destinies_id")
   images       images[]
   activities   activities[]
   destinies    destinies @relation(fields: [destiniesId], references: [id]) 
@@ -61,15 +61,15 @@ model touristics {
 model images {
   id            Int @id @default(autoincrement())
   url           String @db.VarChar(500)
-  touristicId   Int
+  touristicId   Int @map("touristic_id")
   touristic     touristics @relation(fields: [touristicId], references: [id])
 }
 
 model activities {
   id           Int @id @default(autoincrement())
   description  String @db.VarChar(500)
-  touristicId  Int
-  userId       String
+  touristicId  Int @map("touristic_id")
+  userId       String @map("user_id")
   touristic    touristics @relation(fields: [touristicId], references: [id])
   user         User @relation(fields: [userId], references: [id])
   }
