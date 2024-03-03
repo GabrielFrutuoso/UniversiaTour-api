@@ -7,7 +7,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class DestinyService {
   constructor(private readonly prisma: PrismaService) {}
   create(createDestinyDto: CreateDestinyDto) {
-    return this.prisma.destinies.create({ data: createDestinyDto });
+    return this.prisma.destinies.create({ data: { ...createDestinyDto } });
   }
 
   findAll() {

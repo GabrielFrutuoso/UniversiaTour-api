@@ -9,7 +9,5 @@ export class CreateDestinyDto implements Prisma.destiniesUncheckedCreateInput {
     local_maps: string;
     description: string;
     image_url: string;
-    
     touristics?: Prisma.touristicsUncheckedCreateNestedManyWithoutDestiniesInput;
-
 }
