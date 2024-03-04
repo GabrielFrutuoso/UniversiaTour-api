@@ -10,9 +10,9 @@ export class CreateActivityDto {
     description: string;
 
     @IsNumber()
-    touristicId: number;
+    touristic_id: number;
 
     @IsString()
-    userId: string;
+    user_id: string;
 
 }

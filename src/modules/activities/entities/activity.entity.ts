@@ -4,9 +4,9 @@ export class Activity {
     id?: number;
     location: string;
     city: string;
-    localMaps: string;
+    local_maps: string;
     description: string;
-    destiniesId: number;
+    destinies_id: number;
     user: Prisma.UserCreateWithoutActivitiesInput;
     touristic: Prisma.touristicsCreateNestedOneWithoutActivitiesInput;
 }

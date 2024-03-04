@@ -15,10 +15,6 @@ export class TouristicsService {
     return this.prisma.touristics.findMany({ include: { images: true, destinies: true } });
   }
 
-  findByDestiny(destiniesId: number) {
-    return this.prisma.touristics.findMany({ where: { destiniesId }, include: { images: true } });
-  }
-
   findOne(id: number) {
     return this.prisma.touristics.findUnique({ where: { id }, include: { images: true, destinies: true } });
   }

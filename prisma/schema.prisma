@@ -6,8 +6,6 @@ generator client {
 datasource db {
   provider  = "postgresql"
   url  	    = env("DATABASE_URL")
-  // uncomment next line if you use Prisma <5.10
-  directUrl = env("DATABASE_URL_UNPOOLED")
 }
 
 //user model
@@ -36,11 +34,11 @@ enum role {
 model destinies {
   id           Int @id @default(autoincrement())
   state        String
-  best_season   String @db.VarChar(500) @map("best_season")
+  best_season   String @db.VarChar(500)
   weather      String @db.VarChar(500)
-  local_maps    String @db.VarChar(500) @map("local_maps")
+  local_maps    String @db.VarChar(500)
   description  String @db.VarChar(2000)
-  image_url     String @db.VarChar(500) @map("image_url")
+  image_url     String @db.VarChar(500)
   touristics   touristics[]
 }
 
@@ -49,9 +47,9 @@ model touristics {
   id           Int @id @default(autoincrement())
   location     String
   city         String
-  local_maps    String @db.VarChar(500) @map("local_maps")
+  local_maps    String @db.VarChar(500)
   description  String @db.VarChar(2000)
-  destinies_id  Int @map("destinies_id")
+  destinies_id  Int
   images       images[]
   activities   activities[]
   destinies    destinies @relation(fields: [destinies_id], references: [id]) 
@@ -61,15 +59,15 @@ model touristics {
 model images {
   id            Int @id @default(autoincrement())
   url           String @db.VarChar(500)
-  touristic_id   Int @map("touristic_id")
+  touristic_id   Int
   touristic     touristics @relation(fields: [touristic_id], references: [id])
 }
 
 model activities {
   id           Int @id @default(autoincrement())
   description  String @db.VarChar(500)
-  touristic_id  Int @map("touristic_id")
-  user_id       String @map("user_id")
+  touristic_id  Int
+  user_id       String
   touristic    touristics @relation(fields: [touristic_id], references: [id])
   user         User @relation(fields: [user_id], references: [id])
   }
