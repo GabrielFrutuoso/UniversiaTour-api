@@ -3,6 +3,7 @@ import { IsNumber, IsOptional, IsString } from "class-validator";
 
 export class CreateActivityDto implements Prisma.activitiesUncheckedCreateInput {
     @IsNumber()
+    @IsOptional()
     id?: number;
 
     @IsString()
