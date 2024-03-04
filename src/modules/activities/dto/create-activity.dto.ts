@@ -1,12 +1,17 @@
 import { Prisma } from "@prisma/client";
-import { IsNumber, IsString } from "class-validator";
+import { IsNumber, IsOptional, IsString } from "class-validator";
 
-export class CreateActivityDto implements Prisma.activitiesCreateInput {
-    description: string;
+export class CreateActivityDto implements Prisma.activitiesUncheckedCreateInput {
+    @IsNumber()
+    id?: number;
 
     @IsString()
-    touristic: Prisma.touristicsCreateNestedOneWithoutActivitiesInput;
+    description: string;
 
     @IsNumber()
-    user: Prisma.UserCreateNestedOneWithoutActivitiesInput;
+    touristic_id: number;
+
+    @IsString()
+    user_id: string;
+
 }

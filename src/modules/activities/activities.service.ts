@@ -8,7 +8,7 @@ export class ActivitiesService {
   constructor(private readonly prisma: PrismaService) {}
 
   create(createActivityDto: CreateActivityDto) {
-    return this.prisma.activities.create({ data: createActivityDto});
+    return this.prisma.activities.create({ data: createActivityDto });
   }
 
   findAll() {
@@ -19,7 +19,7 @@ export class ActivitiesService {
     return this.prisma.activities.findUnique({ where: { id }, include: { touristic: true, }});
   } 
   update(id: number, updateActivityDto: UpdateActivityDto) {
-    return this.prisma.activities.update({ where: { id }, data: { ...updateActivityDto } });
+    return this.prisma.activities.update({ where: { id }, data: updateActivityDto });
   }
 
   remove(id: number) {
