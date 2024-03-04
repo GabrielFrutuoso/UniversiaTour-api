@@ -8,7 +8,7 @@ export class ActivitiesService {
   constructor(private readonly prisma: PrismaService) {}
 
   create(createActivityDto: CreateActivityDto) {
-    return this.prisma.activities.create({ data: { ...createActivityDto } });
+    return this.prisma.activities.create({ data: createActivityDto});
   }
 
   findAll() {
